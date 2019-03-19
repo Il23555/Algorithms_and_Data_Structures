@@ -117,8 +117,10 @@ public class LinkedList {
             head = _nodeToInsert;
         }
         else{
-            _nodeToInsert.next = _nodeAfter.next;
-            _nodeAfter.next = _nodeToInsert;
+            if (containValue(_nodeAfter.value)) {
+                _nodeToInsert.next = _nodeAfter.next;
+                _nodeAfter.next = _nodeToInsert;
+            }
         }
 
         if (_nodeAfter == tail)

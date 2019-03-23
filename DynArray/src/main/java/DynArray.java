@@ -1,27 +1,29 @@
 import java.awt.peer.SystemTrayPeer;
 import java.lang.IndexOutOfBoundsException;
+import java.lang.reflect.Array;
 
 public class DynArray<T>   
 {
     public T [] array;
     public int count;
     public int capacity;
+    private Class<T> clazz;
 
-    public DynArray()
-    {
-        count = 0;
-        makeArray(16);
+    public DynArray(Class<T> clazz){
+       this.clazz = clazz;
+       count = 0;
+       makeArray(16);
     }
 
     public void makeArray(int new_capacity)
     {
-        T[] temp = (T[]) new Object[capacity];
+        T[] temp = (T[]) Array.newInstance(this.clazz,capacity); ;
 
         for (int i =0; i < count;i++) {         //сохраняем текущие значения массива во временный массив
             temp[i] = array[i];
         }
 
-        array =(T[]) new Object[new_capacity];  //создаем новый массив и записываем все текущие значения
+        array = (T[]) Array.newInstance(this.clazz, new_capacity);  //создаем новый массив и записываем все текущие значения
 
         for(int i = 0;i < count;i++){
             array[i] = temp[i];

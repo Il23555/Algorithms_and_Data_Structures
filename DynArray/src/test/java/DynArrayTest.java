@@ -4,7 +4,7 @@ public class DynArrayTest {
 
     @org.junit.Test
     public void getItem() {
-        DynArray<Integer> arr = new DynArray<Integer>();
+        DynArray<Integer> arr = new DynArray<Integer>(Integer.class);
         Integer a = 2;
         arr.append(1);
         arr.append(a);
@@ -13,7 +13,7 @@ public class DynArrayTest {
 
     @org.junit.Test
     public void append() {
-        DynArray<Integer> arr = new DynArray();
+        DynArray<Integer> arr = new DynArray<Integer>(Integer.class);
         for (int i = 0; i < 20; i++){
             Integer a = i;
             arr.append(a);
@@ -23,7 +23,7 @@ public class DynArrayTest {
 
     @org.junit.Test
     public void insert() {
-        DynArray<Integer> arr = new DynArray();   //вставка элемента когда, массив не заполнен полностью
+        DynArray<Integer> arr = new DynArray<Integer>(Integer.class); //вставка элемента когда, массив не заполнен полностью
         for (int i = 10; i < 20; i++){
             Integer a = i;
             arr.append(a);
@@ -49,7 +49,7 @@ public class DynArrayTest {
 
     @org.junit.Test
     public void remove() {
-        DynArray<Integer> arr = new DynArray();  //удаление элемента когда, массив не заполнен полностью
+        DynArray<Integer> arr = new DynArray<Integer>(Integer.class); //удаление элемента когда, массив не заполнен полностью
         for (int i = 5; i < 20; i++){
             Integer a = i;
             arr.append(a);

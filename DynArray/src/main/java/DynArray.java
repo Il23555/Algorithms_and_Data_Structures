@@ -52,7 +52,7 @@ public class DynArray<T>
 
 
     public void insert(T itm, int index) {
-        try {
+
         if ((index > count) || (index < 0))  //проверка индекса
         {
             throw new IndexOutOfBoundsException("Попытка вставки элемента в недопустимую позицию");
@@ -68,14 +68,10 @@ public class DynArray<T>
 
         array[index] = itm;                                //вставка
         count++;
-    }
-        catch (IndexOutOfBoundsException e) {
-            System.out.println(e.getMessage());
-        }
+
     }
 
     public void remove(int index) {
-        try {
         if ((index >= count) || (index < 0))               //проверка индекса
         {
             throw new IndexOutOfBoundsException("Попытка удаления элемента в недопустимой позиции");
@@ -91,10 +87,7 @@ public class DynArray<T>
                 makeArray(((capacity * 2) / 3));
             else
                 makeArray(16);
-        }
-        catch (IndexOutOfBoundsException e) {
-            System.out.println(e.getMessage());
-        }
+
     }
 
 }

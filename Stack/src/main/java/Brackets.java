@@ -9,30 +9,10 @@ import java.io.InputStreamReader;
 
 public class Brackets {
     public static void main(String[] args) throws IOException{
-        Stack stack = readString();
+        Stack str = readString();
 
-        //int close = 0, open = 0, err = 0;
-
-        Stack close = new Stack();
-        Stack open = new Stack();
-        boolean err = false;
-
-        while ((stack.size() > 0) && (!err)){
-            String s = (String) stack.pop();
-
-            if (s.equals(")"))
-                close.push(s);
-
-            if (s.equals("(")){
-                if (open.size() >= close.size())
-                    err = true;
-                else
-                    open.push(s);
-            }
-        }
-
-        if ((!err)&&(open.size() == close.size()))
-            System.out.println("строка сбалансирована, кол-во скобок равно = " + open.size());
+        if (correctString(str))
+            System.out.println("строка сбалансирована");
         else
             System.out.println("строка не сбалансирована");
     }
@@ -47,6 +27,23 @@ public class Brackets {
             str = str.substring(1);
         }
         return stack;
+    }
+
+    public static boolean correctString(Stack stack){
+        Stack temp = new Stack();
+        while (stack.size() > 0){
+            String s = (String) stack.pop();
+
+            if (s.equals(")"))
+                temp.push(s);
+
+            if (s.equals("("))
+                if (temp.size() > 0)
+                    temp.pop();
+                else
+                    return false;
+        }
+        return (temp.size() == 0);
     }
 
 

@@ -11,24 +11,28 @@ public class Brackets {
     public static void main(String[] args) throws IOException{
         Stack stack = readString();
 
-        int close = 0, open = 0, err = 0;
+        //int close = 0, open = 0, err = 0;
 
-        while ((stack.size() > 0) && (err == 0)){
+        Stack close = new Stack();
+        Stack open = new Stack();
+        boolean err = false;
+
+        while ((stack.size() > 0) && (!err)){
             String s = (String) stack.pop();
 
             if (s.equals(")"))
-                close++;
+                close.push(s);
 
             if (s.equals("(")){
-                if (open >= close)
-                    err++;
+                if (open.size() >= close.size())
+                    err = true;
                 else
-                    open++;
+                    open.push(s);
             }
         }
 
-        if ((err == 0)&&(open == close))
-            System.out.println("строка сбалансирована, кол-во скобок равно = " + open);
+        if ((!err)&&(open.size() == close.size()))
+            System.out.println("строка сбалансирована, кол-во скобок равно = " + open.size());
         else
             System.out.println("строка не сбалансирована");
     }

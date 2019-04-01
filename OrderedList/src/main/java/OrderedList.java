@@ -27,17 +27,13 @@ public class OrderedList<T>
         _ascending = asc;
     }
 
-    public int compare(T v1, T v2) //сравнение значений
+    public <T> int compare(T v1, T v2) //сравнение значений
     {
-        if ((v1 instanceof Integer) && (v2 instanceof Integer)) {
-            if ((Integer)v1 < (Integer) v2)
-                return -1;
-            if (v1 == v2)
-                return 0;
-            if ((Integer)v1 > (Integer)v2)
-                return 1;
-        }
-        return 0;
+        if ((v1 instanceof String)&&(v2 instanceof  String))
+            return  v1.toString().compareTo(v2.toString());
+        if ((v1 instanceof Integer) && (v2 instanceof Integer))
+            return ((Integer) v1).compareTo((Integer)v2);
+        return -1;
     }
 
     public void add(T value)      //вставка элемента
@@ -87,7 +83,7 @@ public class OrderedList<T>
     {
         Node<T> temp = head;
         while (temp != null){
-            int i = compare(temp.value,val);
+            int i = compare(temp.value, val);
             if (i == 0)
                 return temp;
             if ((i == 1) && (_ascending))

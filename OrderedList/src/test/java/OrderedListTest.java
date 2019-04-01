@@ -18,6 +18,11 @@ public class OrderedListTest {
         assertEquals(4,list.tail.value);      //добавили в конец
         list.add(0);
         assertEquals(0,list.head.value);      //добавили в начало
+        list.add("h");
+        assertEquals("h",list.tail.value);      //добавили cтроку
+        list.add("hh");
+        assertEquals("hh",list.tail.value);
+        assertEquals("h",list.tail.prev.value);
     }
 
     @org.junit.Test

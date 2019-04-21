@@ -177,4 +177,49 @@ class BST<T>
         return count;
     }
 
+    public ArrayList<BSTNode<T>> DeepAllNodes(int order){
+        ArrayList<BSTNode<T>> list = new ArrayList<BSTNode<T>>();
+        Stack<BSTNode<T>> stack = new Stack<BSTNode<T>>();
+        if (order == 2)
+            stack.push(Root);
+        else {
+            stack.push(Root.RightChild);
+            stack.push(Root.LeftChild);
+        }
+
+        BSTNode<T> temp;
+        while(stack.size() > 0){
+            if ((order == 0) && (stack.peek() == Root.RightChild))
+                    list.add(Root);
+            temp = stack.pop();
+            list.add(temp);
+            if (temp.RightChild != null)
+                stack.push(temp.RightChild);
+            if (temp.LeftChild != null)
+                stack.push(temp.LeftChild);
+        }
+        if(order == 1)
+            list.add(Root);
+
+        return list;
+    }
+
+    public ArrayList<BSTNode<T>> WideAllNodes(){
+        ArrayList<BSTNode<T>> list = new ArrayList<BSTNode<T>>();
+
+        Queue<BSTNode<T>> queue = new LinkedList<BSTNode<T>>();
+        queue.offer(Root);
+        BSTNode<T> temp;
+        while(queue.size()>0){
+            temp = queue.poll();
+            list.add(temp);
+            if(temp.LeftChild != null){
+                queue.offer(temp.LeftChild);
+            }
+            if(temp.RightChild != null) {
+                queue.offer(temp.RightChild);
+            }
+        }
+        return list;
+    }
 }

@@ -92,21 +92,19 @@ public class BSTTest {
 
     @Test
     public void deepAllNodes() {
-        BSTNode<Integer> root = new BSTNode<Integer>(8,8,null);
+        BSTNode<Integer> root = new BSTNode<Integer>(9,9,null);
         BST<Integer> tree = new BST<Integer>(root);
-        tree.AddKeyValue(12,12);
         tree.AddKeyValue(4,4);
-        tree.AddKeyValue(2,2);
-        tree.AddKeyValue(10,10);
-        tree.AddKeyValue(14,14);
-        tree.AddKeyValue(9,9);
-        tree.AddKeyValue(1,1);
         tree.AddKeyValue(3,3);
-        tree.AddKeyValue(11,11);
-        tree.AddKeyValue(13,13);
-        tree.AddKeyValue(5,5);
         tree.AddKeyValue(6,6);
+        tree.AddKeyValue(5,5);
         tree.AddKeyValue(7,7);
+        tree.AddKeyValue(12,12);
+        tree.AddKeyValue(11,11);
+        tree.AddKeyValue(14,14);
+        tree.AddKeyValue(13,13);
+
+        assertTrue(tree.FindNodeByKey(6).NodeHasKey);
         ArrayList<BSTNode<Integer>> list = tree.DeepAllNodes(2);
         for(BSTNode<Integer> x: list) {
             System.out.print(x.NodeKey + "  ");

@@ -179,29 +179,22 @@ class BST<T>
 
     public ArrayList<BSTNode<T>> DeepAllNodes(int order){
         ArrayList<BSTNode<T>> list = new ArrayList<BSTNode<T>>();
-        Stack<BSTNode<T>> stack = new Stack<BSTNode<T>>();
-        if (order == 2)
-            stack.push(Root);
-        else {
-            stack.push(Root.RightChild);
-            stack.push(Root.LeftChild);
-        }
-
-        BSTNode<T> temp;
-        while(stack.size() > 0){
-            if ((order == 0) && (stack.peek() == Root.RightChild))
-                    list.add(Root);
-            temp = stack.pop();
-            list.add(temp);
-            if (temp.RightChild != null)
-                stack.push(temp.RightChild);
-            if (temp.LeftChild != null)
-                stack.push(temp.LeftChild);
-        }
-        if(order == 1)
-            list.add(Root);
-
+        search(list,Root,order);
         return list;
+    }
+
+    private BSTNode<T> search(ArrayList<BSTNode<T>> list, BSTNode<T> temp,int order){
+        if(order == 2)
+            list.add(temp);
+        if (temp.LeftChild != null)
+            search(list,temp.LeftChild,order);
+        if (order == 0)
+            list.add(temp);
+        if (temp.RightChild != null)
+            search(list,temp.RightChild,order);
+        if (order == 1)
+            list.add(temp);
+        return temp;
     }
 
     public ArrayList<BSTNode<T>> WideAllNodes(){

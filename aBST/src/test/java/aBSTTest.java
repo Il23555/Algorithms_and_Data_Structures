@@ -17,7 +17,7 @@ public class aBSTTest {
         assertEquals((Integer)0,tree.FindKeyIndex(9));
         assertEquals((Integer)1,tree.FindKeyIndex(6));
         assertEquals((Integer)2,tree.FindKeyIndex(14));
-        assertEquals(null,tree.FindKeyIndex(1));
+
     }
 
     @org.junit.Test
@@ -26,7 +26,7 @@ public class aBSTTest {
         assertEquals(0,tree.AddKey(9));
         assertEquals(1,tree.AddKey(6));
         assertEquals(2,tree.AddKey(14));
-        assertEquals(-1,tree.AddKey(10));
+        assertEquals(5,tree.AddKey(10));
 
         for (int i = 0; i < tree.Tree.length; i++) {
             System.out.print(tree.Tree[i] + "  ");

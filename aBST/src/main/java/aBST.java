@@ -22,14 +22,13 @@ class aBST
         int index = 0;
         while (Tree.length > index){
             if (Tree[index] == null){
-                return key*(-1);
+                return index*(-1);
             }
             if (Tree[index] == key)
                 return index;
             if (Tree[index] > key)
                 index = 2*index+1;
             else
-            if (Tree[index] < key)
                 index = 2 * index + 2;
         }
         return null; // не найден
@@ -48,9 +47,7 @@ class aBST
             if (Tree[index] > key)
                 index = 2*index+1;
             else
-                if (Tree[index] < key)
-                    index = 2 * index + 2;
-
+                index = 2 * index + 2;
         }
         return -1;
         // индекс добавленного/существующего ключа или -1 если не удалось

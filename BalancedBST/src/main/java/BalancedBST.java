@@ -49,7 +49,7 @@ class BalancedBST
     public void GenerateTree()// создаём дерево с нуля из массива BSTArray
     {
         Root = new BSTNode(BSTArray[0],null);
-        Root.Level = 0;
+        Root.Level = 1;
         if (BSTArray.length != 1)
             treeByNode(Root,0);
     }

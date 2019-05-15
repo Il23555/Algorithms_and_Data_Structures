@@ -1,3 +1,4 @@
+import com.sun.corba.se.impl.encoding.CDROutputObject;
 import com.sun.org.apache.xpath.internal.operations.Or;
 
 import java.util.*;
@@ -133,6 +134,42 @@ class SimpleTree<T>
                 count++;
 
             for (SimpleTreeNode<T> x : temp.Children) {
+                queue.offer(x);
+            }
+        }
+        return count;
+    }
+
+    public ArrayList<Integer> EvenTrees()
+    {
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        Queue<SimpleTreeNode<T>> queue = new LinkedList<SimpleTreeNode<T>>();
+        queue.offer(Root);
+
+        while(queue.size() != 0) {
+            SimpleTreeNode<T> temp = queue.poll();
+
+            if ((CountByNode(temp) % 2 == 0) && (temp != Root)){
+                list.add((Integer)temp.Parent.NodeValue);
+                list.add((Integer)temp.NodeValue);
+            }
+
+            for (SimpleTreeNode<T> x : temp.Children) {
+                queue.offer(x);
+            }
+        }
+        return list;
+    }
+
+    public int CountByNode(SimpleTreeNode<T> node){
+        int count = 1;
+        Queue<SimpleTreeNode<T>> queue = new LinkedList<SimpleTreeNode<T>>();
+        queue.offer(node);
+
+        while(queue.size() != 0) {
+            SimpleTreeNode<T> temp = queue.poll();
+            for (SimpleTreeNode<T> x : temp.Children) {
+                count++;
                 queue.offer(x);
             }
         }

@@ -1,3 +1,5 @@
+import org.junit.Test;
+
 import java.util.LinkedList;
 
 import static org.junit.Assert.*;
@@ -132,5 +134,36 @@ public class SimpleTreeTest {
         tree.AddChild(node2,node4);
         tree.AddChild(node1,node5);
         assertEquals(3,tree.LeafCount());
+    }
+
+    @Test
+    public void evenTrees() {
+        SimpleTreeNode<Integer> node1 = new SimpleTreeNode<Integer>(1,null);
+        SimpleTreeNode<Integer> node2 = new SimpleTreeNode<Integer>(2,null);
+        SimpleTreeNode<Integer> node3 = new SimpleTreeNode<Integer>(3,null);
+        SimpleTreeNode<Integer> node4 = new SimpleTreeNode<Integer>(4,null);
+        SimpleTreeNode<Integer> node5 = new SimpleTreeNode<Integer>(5,null);
+        SimpleTreeNode<Integer> node6 = new SimpleTreeNode<Integer>(6,null);
+        SimpleTreeNode<Integer> node7 = new SimpleTreeNode<Integer>(7,null);
+        SimpleTreeNode<Integer> node8 = new SimpleTreeNode<Integer>(8,null);
+        SimpleTreeNode<Integer> node9 = new SimpleTreeNode<Integer>(9,null);
+        SimpleTreeNode<Integer> node10 = new SimpleTreeNode<Integer>(10,null);
+        SimpleTree<Integer> tree = new SimpleTree<Integer>(node1);
+        tree.AddChild(node1,node2);
+        tree.AddChild(node1,node3);
+        tree.AddChild(node1,node6);
+
+        tree.AddChild(node2,node5);
+        tree.AddChild(node2,node7);
+
+        tree.AddChild(node3,node4);
+        tree.AddChild(node6,node8);
+
+        tree.AddChild(node8,node9);
+        tree.AddChild(node8,node10);
+        assertEquals((Integer) 1,tree.EvenTrees().get(0));
+        for ( Integer x : tree.EvenTrees()){
+            System.out.println(x);
+        }
     }
 }

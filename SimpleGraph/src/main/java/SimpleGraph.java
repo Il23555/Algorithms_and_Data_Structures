@@ -1,11 +1,12 @@
 import java.util.*;
-
 class Vertex
 {
     public int Value;
+    public boolean Hit;
     public Vertex(int val)
     {
         Value = val;
+        Hit = false;
     }
 }
 
@@ -67,5 +68,45 @@ class SimpleGraph
             m_adjacency[v1][v2] = 0;
             m_adjacency[v2][v1] = 0;
         }
+    }
+
+    //DFS
+    // Узлы задаются позициями в списке vertex. Возвращается список узлов -- путь из VFrom в VTo. Список пустой, если пути нету.
+    public ArrayList<Vertex> DepthFirstSearch(int VFrom, int VTo)
+    {
+        ArrayList<Vertex> list = new ArrayList<Vertex>();
+        Stack<Integer> stack = new Stack<Integer>();
+
+        int temp = VFrom;
+        vertex[temp].Hit = true;
+        stack.push(temp);
+
+        while(stack.size() > 0){
+            temp = stack.peek();
+
+            if (m_adjacency[temp][VTo] != 0){
+                stack.push(VTo);
+                break;
+            }
+
+            int i = 0;
+            while (i < max_vertex) {
+                if ((m_adjacency[temp][i] != 0) && (!vertex[i].Hit)){
+                    vertex[i].Hit = true;
+                    stack.push(i);
+                    break;
+                }
+                i++;
+            }
+
+            if (i == max_vertex) {
+                stack.pop();
+            }
+        }
+
+        for (Integer x : stack){
+            list.add(vertex[x]);
+        }
+        return list;
     }
 }

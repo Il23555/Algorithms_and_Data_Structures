@@ -1,3 +1,7 @@
+import org.junit.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class SimpleGraphTest {
@@ -74,5 +78,33 @@ public class SimpleGraphTest {
         assertTrue(graph.IsEdge(0,1));
         graph.RemoveEdge(0,1);
         assertFalse(graph.IsEdge(0,1));
+    }
+
+    @Test
+    public void depthFirstSearch() {
+        SimpleGraph graph = new SimpleGraph(7);
+        graph.AddVertex(0);
+        graph.AddVertex(1);
+        graph.AddVertex(2);
+        graph.AddVertex(3);
+        graph.AddVertex(4);
+        graph.AddVertex(5);
+        graph.AddVertex(6);
+        graph.AddEdge(0,1);
+        graph.AddEdge(0,2);
+        graph.AddEdge(1,3);
+        graph.AddEdge(2,4);
+        graph.AddEdge(2,5);
+        graph.AddEdge(3,4);
+        graph.AddEdge(4,6);
+        graph.AddEdge(6,5);
+        ArrayList<Vertex> list = graph.DepthFirstSearch(0,5);
+        assertEquals(0,list.get(0).Value);
+        assertEquals(1,list.get(1).Value);
+        assertEquals(3,list.get(2).Value);
+        assertEquals(4,list.get(3).Value);
+        assertEquals(2,list.get(4).Value);
+        assertEquals(5,list.get(5).Value);
+
     }
 }

@@ -70,8 +70,7 @@ class SimpleGraph
         }
     }
 
-    //DFS
-    // Узлы задаются позициями в списке vertex. Возвращается список узлов -- путь из VFrom в VTo. Список пустой, если пути нету.
+    //DFS // Узлы задаются позициями в списке vertex. Возвращается список узлов -- путь из VFrom в VTo. Список пустой, если пути нету.
     public ArrayList<Vertex> DepthFirstSearch(int VFrom, int VTo)
     {
         ArrayList<Vertex> list = new ArrayList<Vertex>();
@@ -107,6 +106,45 @@ class SimpleGraph
         for (Integer x : stack){
             list.add(vertex[x]);
         }
+        return list;
+    }
+
+    //BFS
+    public ArrayList<Vertex> BreadthFirstSearch(int VFrom, int VTo)
+    {
+        ArrayList<Vertex> list = new ArrayList<Vertex>();
+        Queue<Integer> queue = new LinkedList<Integer>();
+        int[] parent = new  int[max_vertex];
+
+        queue.offer(VFrom);
+        vertex[VFrom].Hit = true;
+        parent[VFrom] = -1;
+        int temp;
+        while (queue.size() > 0){
+            temp = queue.poll();
+
+            if (m_adjacency[temp][VTo] != 0){
+                parent[VTo] = temp;
+                break;
+            }
+
+            for (int i = 0; i < max_vertex; i++) {
+                if ((m_adjacency [temp][i] != 0) && (!vertex[i].Hit)){
+                    queue.offer(i);
+                    vertex[i].Hit = true;
+                    parent[i] = temp;
+                }
+            }
+        }
+
+        //восстановление пути
+        list.add(vertex[VTo]);
+        int v = VTo;
+        while (parent[v] != -1){
+            v = parent[v];
+            list.add(0,vertex[v]);
+        }
+
         return list;
     }
 }

@@ -105,6 +105,35 @@ public class SimpleGraphTest {
         assertEquals(4,list.get(3).Value);
         assertEquals(2,list.get(4).Value);
         assertEquals(5,list.get(5).Value);
+    }
+
+    @Test
+    public void breadthFirstSearch() {
+        SimpleGraph graph = new SimpleGraph(7);
+        graph.AddVertex(2);
+        graph.AddVertex(0);
+        graph.AddVertex(6);
+        graph.AddVertex(8);
+        graph.AddVertex(4);
+        graph.AddVertex(1);
+        graph.AddVertex(3);
+
+        graph.AddEdge(0,1);
+        graph.AddEdge(0,6);
+
+        graph.AddEdge(1,2);
+
+        graph.AddEdge(2,3);
+        graph.AddEdge(2,4);
+        graph.AddEdge(2,5);
+
+        graph.AddEdge(4,6);
+        graph.AddEdge(5,6);
+
+        ArrayList<Vertex> list = graph.BreadthFirstSearch(6,1);
+        assertEquals(3,list.get(0).Value);
+        assertEquals(2,list.get(1).Value);
+        assertEquals(0,list.get(2).Value);
 
     }
 }

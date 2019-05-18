@@ -147,4 +147,37 @@ class SimpleGraph
 
         return list;
     }
+
+    public ArrayList<Vertex> WeakVertices() // возвращает список узлов вне треугольников
+    {
+         ArrayList<Vertex> list = new ArrayList<Vertex>();
+         Queue<Integer> queue = new LinkedList<Integer>();
+         int[] triangle = new int[max_vertex];
+
+
+        for (int i = 0; i < max_vertex ; i++) {
+            if (triangle[i] == 0) {
+                //первая смежная вершина
+                int v = 0;
+                while (m_adjacency[i][v] == 0) {
+                    v++;
+                }
+                //получится ли треугольник
+                for (int j = v; j < max_vertex ; j++) {
+                    if ((m_adjacency[i][j] != 0) && (m_adjacency[v][j] != 0)) {
+                        triangle[i] = 1;
+                        triangle[v] = 1;
+                        triangle[j] = 1;
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < max_vertex; i++) {
+            if (triangle[i] == 0)
+                list.add(vertex[i]);
+        }
+
+        return list;
+    }
 }

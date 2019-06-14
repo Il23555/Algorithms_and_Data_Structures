@@ -1,10 +1,10 @@
 Algorithms and Data Structures
 -----------------------------------
-1. [Связный список ]:https://github.com/Il23555/Algorithms_and_Data_Structures/blob/master/LinkedList1/src/main/java/LinkedList.java
+1. [Связный список ](https://github.com/Il23555/Algorithms_and_Data_Structures/blob/master/LinkedList1/src/main/java/LinkedList.java)
 
 2. [Двухсвязный список](https://github.com/Il23555/Algorithms_and_Data_Structures/blob/master/LinkedList2/src/main/java/LinkedList2.java)
 
-3. [Стек] :https://github.com/Il23555/Algorithms_and_Data_Structures/blob/master/Stack/src/main/java/Stack.java
+3. [Стек]:https://github.com/Il23555/Algorithms_and_Data_Structures/blob/master/Stack/src/main/java/Stack.java
 
 4. [Очередь] :https://github.com/Il23555/Algorithms_and_Data_Structures/blob/master/Queue/src/main/java/Queue.java
 

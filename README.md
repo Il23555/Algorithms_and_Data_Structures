@@ -20,7 +20,7 @@ Algorithms and Data Structures
 
 10. [Множества](https://github.com/Il23555/Algorithms_and_Data_Structures/blob/master/PowerSet/src/main/java/PowerSet.java)
 
-11. [Фильтр Блума](ttps://github.com/Il23555/Algorithms_and_Data_Structures/blob/master/BloomFilter/src/main/java/BloomFilter.java)
+11. [Фильтр Блума](https://github.com/Il23555/Algorithms_and_Data_Structures/blob/master/BloomFilter/src/main/java/BloomFilter.java)
 
 ***
 ### Деревья и графы:
